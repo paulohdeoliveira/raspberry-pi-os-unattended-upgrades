@@ -4,5 +4,5 @@ APT::Periodic::AutocleanInterval "NUMDAYS"; // Limpa o cache APT
 APT::Periodic::Unattended-Upgrade "NUMDAYS"; // Instala os pacotes
 
 Obs.: 
-NUMDAYS é o número de dias em que a ação será realizada.</br>
+NUMDAYS é o número de dias em que a ação será realizada.
 Deve ser definido conforme política de segurança - Gerenciamento de Atualização.
