@@ -3,4 +3,4 @@ APT::Periodic::Download-Upgradeable-Packages "NUMDAYS"; // Realiza o Download do
 APT::Periodic::AutocleanInterval "NUMDAYS"; // Limpa o cache APT
 APT::Periodic::Unattended-Upgrade "NUMDAYS"; // Instala os pacotes
 
-Obs.: NUMDAYS é o número de dias em que a ação será realizada.
+Obs.: NUMDAYS é o número de dias em que a ação será realizada. Deve ser definido conforme política de segurança - Gerenciamneto de Atualização.
