@@ -3,7 +3,7 @@
 smtp_tls_security_level=may
 
 ### Configurar relayhost ###
-relayhost = [servidor smtp]:porta
+relayhost = [servidor smtp]:587
 
 ### Habilitar Autenticação SASL ###
 
