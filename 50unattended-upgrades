@@ -6,7 +6,7 @@
  ### Descomentar ###
  
  Unattended-Upgrade::Mail "seuemail@seuprovedordeemail.com";
- Unattended-Upgrade::MailReport "always"; (always, only-on-error,on-change)
+ Unattended-Upgrade::MailReport "on-change"; (always, only-on-error,on-change)
  Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
  Unattended-Upgrade::Remove-Unused-Dependencies "true";
  Unattended-Upgrade::Automatic-Reboot "true";
