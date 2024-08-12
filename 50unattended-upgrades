@@ -4,10 +4,13 @@
  "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
 
  ### Descomentar ###
- 
+
+ Unattended-Upgrade::AutoFixInterruptedDpkg "true";
+ Unattended-Upgrade::InstallOnShutdown "false";
  Unattended-Upgrade::Mail "seuemail@seuprovedordeemail.com";
  Unattended-Upgrade::MailReport "on-change"; (always, only-on-error,on-change)
  Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
  Unattended-Upgrade::Remove-Unused-Dependencies "true";
  Unattended-Upgrade::Automatic-Reboot "true";
  Unattended-Upgrade::Automatic-Reboot-Time "02:00";
+ Unattended-Upgrade::Verbose "false";
