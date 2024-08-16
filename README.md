@@ -6,6 +6,19 @@
   sudo apt install postfix
   sudo apt install libsasl2-modules
 ```
+#### Habilitar o Unattended-Upgrades
+```
+  sudo dpkg-reconfigure --priority=low unattended-upgrades
+```
+Responder "Yes" na janela que será aberta
+
+>[!NOTE]
+> --priority=low foi utilizado para que o dpkg pergunte apenas o necessário para configurar o pacote unattended-upgrades.
+>
+> Para mais informações sobre o uso de Priorities consulte o DEBCONF (7) ```man 7 debconf ```
+>
+> Caso não possua o DEBCONF(7), pode instalar com o comando ```sudo apt install debconf-doc```
+
 #### Configurar o Unattended-Upgrades
 ```
   sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
