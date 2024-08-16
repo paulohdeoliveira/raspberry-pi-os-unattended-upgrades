@@ -42,7 +42,7 @@ Criar arquivo sasl_passwd
   sudo touch /etc/postfix/sasl/sasl_passwd
 ```
 
-Inserir conteúdo no arquivo sasl_passwd:
+Abrir arquivo sasl_passwd:
 ```
   sudo nano /etc/postfix/sasl/sasl_passwd
 ```
