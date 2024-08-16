@@ -6,9 +6,33 @@
   sudo apt install postfix
   sudo apt install libsasl2-modules
 ```
+#### Configurar o Unattended-Upgrades
+```
+  sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
+```
+Edite o contéudo do arquivo:
 
-#### Configurar o arquivo /etc/postfix/sasl/sasl_passwd ####
->  [!NOTE]
+#### Adicionar texto na seção Unattended-Upgrade::Origins-Pattern{:
+
+ "origin=Raspbian,codename=${distro_codename},label=Raspbian"; </br>
+ "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
+
+ #### Descomentar e Configurar
+
+ Unattended-Upgrade::AutoFixInterruptedDpkg "true";</br>
+ Unattended-Upgrade::InstallOnShutdown "false";</br>
+ Unattended-Upgrade::Mail "seuemail@seuprovedordeemail.com"; (descomentar e configurar apenas se for utilizar notificação por email)</br>
+ Unattended-Upgrade::MailReport "on-change"; (always, only-on-error,on-change) (descomentar e configurar apenas se for utilizar notificação por email)</br>
+ Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";</br>
+ Unattended-Upgrade::Remove-Unused-Dependencies "true";</br>
+ Unattended-Upgrade::Automatic-Reboot "true";</br>
+ Unattended-Upgrade::Automatic-Reboot-Time "02:00";</br>
+ Unattended-Upgrade::Verbose "false";</br>
+
+### Configurar o envio de email
+
+#### Configurar o arquivo /etc/postfix/sasl/sasl_passwd
+>  [!TIP]
 >  Se estiver utilizando o Gmail deverá criar uma Senha de App. Para essa opção ser habilitada é necessário ativar a Autenticação em duas Etapas (2 fatores).
 
 Inserir este conteúdo no arquivo sasl_passwd:
@@ -17,31 +41,31 @@ Inserir este conteúdo no arquivo sasl_passwd:
 [servidor smtp]:587 seuemail:suasenha
 ```
 
-#### Criar banco de dados passwd SASL ####
+#### Criar banco de dados passwd SASL
 > [!IMPORTANT]
 > Executar o comando abaixo sempre que alterar o arquivo sasl_passwd
 ```
   sudo postmap /etc/postfix/sasl/sasl_passwd
 ```
-#### Definir permissões de arquivos ####
+#### Definir permissões de arquivos
 ```
   sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
   sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
 ```
-#### Configurar o arquivo main.cf ####
+#### Configurar o arquivo main.cf
 
 ```
   sudo nano /etc/postfix/main.cf
 ```
-##### Comentar a linha ##### 
+##### Comentar a linha 
 
   #smtp_tls_security_level=may
   
-##### Configurar o relay host #####
+##### Configurar o relay host
 
   relayhost = [servidor smtp]:587
   
- ##### Habilitar Autenticação SASL #####
+ ##### Habilitar Autenticação SASL
 
   Inserir linhas no final do arquivo **main.cf**
   ```
@@ -57,11 +81,31 @@ Inserir este conteúdo no arquivo sasl_passwd:
   sudo systemctl restart postfix.service
 ```
 
-#### Testar o envio de email ####
+#### Testar o envio de email
 ```
   sudo unattended-upgrades -d
 ```
- #### Configurar o horário das atualizações ####
+### Gestão das atualizações
+
+#### Configurar o intervalo das atualizações
+
+```
+  sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+```
+
+Inserir este conteúdo no arquivo:
+
+>[!NOTE]
+> O número entre "aspas" indica o intevalo de dias em que as tarefas do APT serão realizadas. Esta configuração trabalha junto com a configuração de horário do APT (próximo tópico).
+
+```
+APT::Periodic::Update-Package-Lists "1"; // Atualiza a lista de pacotes
+APT::Periodic::Download-Upgradeable-Packages "1"; // Realiza o Download dos pacotes atualizáveis
+APT::Periodic::AutocleanInterval "30"; // Limpa o cache APT
+APT::Periodic::Unattended-Upgrade "1"; // Instala os pacotes
+```
+
+#### Configurar o horário das atualizações
 
 >[!TIP]
 > Não utilize o Cron para agendar as atualizações. O Unattended-Upgrades utiliza a configuração de horário do APT!
@@ -76,7 +120,7 @@ Caminho dos arquivos de horário de atualização APT:
 
 /lib/systemd/system/apt-daily-upgrade.timer
 
-**Para definir o horário de Download**
+**Definir o horário de Download**
 ```
   sudo systemctl edit apt-daily.timer
 ```
@@ -98,7 +142,7 @@ Verificar o agendamento
 ```
   sudo systemctl status apt-daily.timer
 ```
-**Para definir o horário de Upgrade**
+**Definir o horário de Upgrade**
 ```
   sudo systemctl edit apt-daily-upgrade.timer
 ```
