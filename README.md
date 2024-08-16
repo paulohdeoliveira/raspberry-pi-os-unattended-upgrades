@@ -10,7 +10,7 @@
 ```
   sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
 ```
-Edite o contéudo do arquivo:
+Edite o contéudo do arquivo conforme abaixo:
 
 #### Adicionar texto na seção Unattended-Upgrade::Origins-Pattern{:
 
@@ -34,8 +34,18 @@ Edite o contéudo do arquivo:
 #### Configurar o arquivo /etc/postfix/sasl/sasl_passwd
 >  [!TIP]
 >  Se estiver utilizando o Gmail deverá criar uma Senha de App. Para essa opção ser habilitada é necessário ativar a Autenticação em duas Etapas (2 fatores).
+>
+>  Caso a pasta sasl em /etc/postfix/ não exista pode criá-la com o comando "sudo mkdir /etc/postfix/sasl/"
 
-Inserir este conteúdo no arquivo sasl_passwd:
+Criar arquivo sasl_passwd
+```
+  sudo touch /etc/postfix/sasl/sasl_passwd
+```
+
+Inserir conteúdo no arquivo sasl_passwd:
+```
+  sudo nano /etc/postfix/sasl/sasl_passwd
+```
 
 ```
 [servidor smtp]:587 seuemail:suasenha
