@@ -46,7 +46,7 @@ Inserir conteúdo no arquivo sasl_passwd:
 ```
   sudo nano /etc/postfix/sasl/sasl_passwd
 ```
-
+Conteúdo do arquivo:
 ```
 [servidor smtp]:587 seuemail:suasenha
 ```
