@@ -10,6 +10,9 @@
 #### Configurar o arquivo /etc/postfix/sasl/sasl_passwd ####
 >  [!NOTE]
 >  Se estiver utilizando o Gmail deverá criar uma Senha de App. Para essa opção ser habilitada é necessário ativar a Autenticação em duas Etapas (2 fatores).
+
+Inserir este conteúdo no arquivo sasl_passwd:
+
 ```
 [servidor smtp]:587 seuemail:suasenha
 ```
@@ -25,7 +28,7 @@
   sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
   sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
 ```
-#### Configurar arquivo o main.cf ####
+#### Configurar o arquivo main.cf ####
 
 ```
   sudo nano /etc/postfix/main.cf
