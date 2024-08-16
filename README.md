@@ -10,12 +10,13 @@
 ```
   sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
 ```
-Edite o contéudo do arquivo conforme abaixo:
+Editar o conteúdo do arquivo conforme abaixo:
 
 #### Adicionar texto na seção Unattended-Upgrade::Origins-Pattern{:
-
- "origin=Raspbian,codename=${distro_codename},label=Raspbian"; </br>
+```
+ "origin=Raspbian,codename=${distro_codename},label=Raspbian";
  "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
+```
 
  #### Descomentar e Configurar
 
@@ -106,7 +107,7 @@ Conteúdo do arquivo:
 Inserir este conteúdo no arquivo:
 
 >[!NOTE]
-> O número entre "aspas" indica o intevalo de dias em que as tarefas do APT serão realizadas. Esta configuração trabalha junto com a configuração de horário do APT (próximo tópico).
+> O número entre "aspas" indica o intervalo de dias em que as tarefas do APT serão realizadas. Esta configuração trabalha junto com a configuração de horário do APT (próximo tópico).
 
 ```
 APT::Periodic::Update-Package-Lists "1"; // Atualiza a lista de pacotes
