@@ -1,8 +1,4 @@
-APT::Periodic::Update-Package-Lists "NUMDAYS"; // Atualiza a lista de pacotes
-APT::Periodic::Download-Upgradeable-Packages "NUMDAYS"; // Realiza o Download dos pacotes atualizáveis
-APT::Periodic::AutocleanInterval "NUMDAYS"; // Limpa o cache APT
-APT::Periodic::Unattended-Upgrade "NUMDAYS"; // Instala os pacotes
-
-Obs.: 
-NUMDAYS é o número de dias em que a ação será realizada.
-Deve ser definido conforme política de segurança - Gerenciamento de Atualização.
+APT::Periodic::Update-Package-Lists "1"; // Atualiza a lista de pacotes
+APT::Periodic::Download-Upgradeable-Packages "1"; // Realiza o Download dos pacotes atualizáveis
+APT::Periodic::AutocleanInterval "30"; // Limpa o cache APT
+APT::Periodic::Unattended-Upgrade "1"; // Instala os pacotes
