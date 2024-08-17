@@ -1,6 +1,14 @@
 #### Automação de atualizações do sistema Raspbian (debian bookworm) no Raspberry Pi e envio de notificação por email com autenticação SASL.
 
 #### Pacotes necessários
+
+>[!IMPORTANT]
+> Durante a instalação do Postfix será aberta uma janela onde deverá ser escolhida a opção ```Internet Site``` e depois informado o "Mail Name" que é o nome do host.
+>
+> Para confirmar o nome do host pode ser utilizado o comando ```hostname -f```.
+>
+> Caso a janela de configuração não apareça utilize o comando ```sudo dpkg-reconfigure postfix```, após o término da instalação do pacote.
+
 ```
   sudo apt install unattended-upgrades
   sudo apt install postfix
