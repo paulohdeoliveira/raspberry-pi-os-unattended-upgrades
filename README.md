@@ -43,8 +43,8 @@ Editar o conteúdo do arquivo conforme abaixo:
 
  Unattended-Upgrade::AutoFixInterruptedDpkg "true";</br>
  Unattended-Upgrade::InstallOnShutdown "false";</br>
- Unattended-Upgrade::Mail "seuemail@seuprovedordeemail.com"; (descomentar e configurar apenas se for utilizar notificação por email)</br>
- Unattended-Upgrade::MailReport "on-change"; (always, only-on-error,on-change) (descomentar e configurar apenas se for utilizar notificação por email)</br>
+ Unattended-Upgrade::Mail "seuemail@seuprovedordeemail.com";</br>
+ Unattended-Upgrade::MailReport "on-change"; (always, only-on-error,on-change)</br>
  Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";</br>
  Unattended-Upgrade::Remove-Unused-Dependencies "true";</br>
  Unattended-Upgrade::Automatic-Reboot "true";</br>
@@ -117,6 +117,11 @@ Conteúdo do arquivo:
 ```
   sudo unattended-upgrades -d
 ```
+>[!TIP]
+> Se escolheu a opção "on-change" no parâmetro ```Unattended-Upgrade::MailReport "on-change";``` apenas receberá o email se houver alguma "mudança" como atualização, remoção de pacotes, etc...
+>
+> Para realizar o teste de forma mais assertiva mude o parâmetro para ```Unattended-Upgrade::MailReport "always";``` assim receberá o email informando a execução do unattended-upgrade, mesmo que não haja atualização a ser feita.
+
 ### Gestão das atualizações
 
 #### Configurar o intervalo das atualizações
