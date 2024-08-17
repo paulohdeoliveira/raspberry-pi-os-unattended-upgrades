@@ -99,7 +99,7 @@ Conteúdo do arquivo:
   
  ##### Habilitar Autenticação SASL
 
-  Inserir linhas no final do arquivo **main.cf**
+  Inserir linhas no final do arquivo
   ```
   smtp_sasl_auth_enable = yes
   smtp_sasl_security_options = noanonymous
