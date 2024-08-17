@@ -88,6 +88,11 @@ Conteúdo do arquivo:
 ```
 #### Configurar o arquivo main.cf
 
+>[!WARNING]
+> Não copie o arquivo ```main.cf``` disponível no repositório pois o contéudo será diferente para cada instalação do postfix.
+>
+> Em vez disso edite seu arquivo original (gerado na instalação do Postfix) de acordo com este tópico.
+
 ```
   sudo nano /etc/postfix/main.cf
 ```
@@ -209,20 +214,6 @@ Verificar o agendamento
 ```
   sudo systemctl status apt-daily-upgrade.timer
 ```
-
->[!WARNING]
-> Não copie o arquivo ```main.cf``` pois o contéudo será diferente para cada instalação do postfix.
->
-> Em vez disso edite seu arquivo original (gerado na instalação do Postfix) de acordo com o tópico ```Configurar o arquivo main.cf```.
->
-
-
-
-
-
-
-
-
 
 
 
