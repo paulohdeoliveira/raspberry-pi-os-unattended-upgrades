@@ -165,8 +165,8 @@ Caminho dos arquivos de horário de atualização APT:
 ```
   sudo systemctl edit apt-daily.timer
 ```
->[!IMPORTANT]
-> O código OnCalendar= é necessário para realizar o override do horário original. Se não colocar este código a configuração do horário não irá funcionar.
+>[!NOTE]
+> O comando acima criará o arquivo ```/etc/systemd/system/apt-daily.timer.d/override.conf``` que deverá conter o conteúdo abaixo.
 
 Acrescentar o código
 ```
@@ -175,6 +175,9 @@ Acrescentar o código
   OnCalendar=08:00 (colocar o horário)
   RandomizedDelaySec=0
 ```
+>[!IMPORTANT]
+> O código OnCalendar= é necessário para realizar o override do horário original. Se não colocar este código a configuração do horário não irá funcionar.
+
 Reiniciar o serviço apt-daily.timer
 ```
   sudo systemctl restart apt-daily.timer
@@ -187,9 +190,8 @@ Verificar o agendamento
 ```
   sudo systemctl edit apt-daily-upgrade.timer
 ```
-
->[!IMPORTANT]
-> O código OnCalendar= é necessário para realizar o override do horário original. Se não colocar este código a configuração do horário não irá funcionar.
+>[!NOTE]
+> O comando acima criará o arquivo ```/etc/systemd/system/apt-daily-upgrade.timer.d/override.conf``` que deverá conter o conteúdo abaixo.
 
 Acrescentar o código
 ```
@@ -198,6 +200,9 @@ Acrescentar o código
   OnCalendar=08:20 (colocar o horário)
   RandomizedDelaySec=0
 ```
+>[!IMPORTANT]
+> O código OnCalendar= é necessário para realizar o override do horário original. Se não colocar este código a configuração do horário não irá funcionar.
+
 Reiniciar o serviço apt-daily-upgrade.timer
 ```
   sudo systemctl restart apt-daily-upgrade.timer
