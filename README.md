@@ -57,7 +57,7 @@ Editar o conteúdo do arquivo conforme abaixo:
 >  [!TIP]
 >  Se estiver utilizando o Gmail deverá criar uma Senha de App. Para essa opção ser habilitada é necessário ativar a Autenticação em duas Etapas (2 fatores).
 >
->  Caso a pasta sasl em /etc/postfix/ não exista pode criá-la com o comando "sudo mkdir /etc/postfix/sasl/"
+>  Caso a pasta sasl em /etc/postfix/ não exista pode criá-la com o comando ```sudo mkdir /etc/postfix/sasl/```
 
 Criar arquivo sasl_passwd
 ```
