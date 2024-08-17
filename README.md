@@ -168,7 +168,7 @@ Acrescentar o código
 ```
   [Timer]
   OnCalendar=
-  OnCalendar=08:00 (coloar o horário)
+  OnCalendar=08:00 (colocar o horário)
   RandomizedDelaySec=0
 ```
 Reiniciar o serviço apt-daily.timer
@@ -191,7 +191,7 @@ Acrescentar o código
 ```
   [Timer]
   OnCalendar=
-  OnCalendar=08:20 (coloar o horário)
+  OnCalendar=08:20 (colocar o horário)
   RandomizedDelaySec=0
 ```
 Reiniciar o serviço apt-daily-upgrade.timer
