@@ -1,4 +1,4 @@
-#### Automação de atualizações do sistema Raspbian (debian bookworm) no Raspberry Pi e envio de notificação por email com autenticação SASL.
+#### Automação de atualizações do sistema Raspberry Pi OS (debian bookworm) no Raspberry Pi e envio de notificação por email com autenticação SASL.
 
 #### Pacotes necessários
 
