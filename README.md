@@ -3,7 +3,7 @@
 #### Pacotes necessários
 
 >[!IMPORTANT]
-> Durante a instalação do Postfix será aberta uma janela onde deverá ser escolhida a opção ```Internet Site``` e depois informado o "Mail Name" que é o nome do host.
+> Durante a instalação do Postfix será aberta uma janela onde deverá ser escolhida a opção ```Internet Site``` e depois informado o "mail name" que é o nome do host.
 >
 > Para confirmar o nome do host pode ser utilizado o comando ```hostname -f```.
 >
@@ -55,7 +55,7 @@ Editar o conteúdo do arquivo conforme abaixo:
 
 #### Configurar o arquivo /etc/postfix/sasl/sasl_passwd
 >  [!TIP]
->  Se estiver utilizando o Gmail deverá criar uma Senha de App. Para essa opção ser habilitada é necessário ativar a Autenticação em duas Etapas (2 fatores).
+>  Se estiver utilizando o Gmail deverá criar uma Senha de App. Para essa opção ser habilitada é necessário ativar a autenticação em duas etapas (2 fatores).
 >
 >  Caso a pasta sasl em /etc/postfix/ não exista pode criá-la com o comando ```sudo mkdir /etc/postfix/sasl/```
 
@@ -69,9 +69,13 @@ Abrir arquivo sasl_passwd:
   sudo nano /etc/postfix/sasl/sasl_passwd
 ```
 Conteúdo do arquivo:
+>[!NOTE]
+> Ajustar ```[servidor smtp]:587``` conforme provedor de email que estiver utilizando.
+
 ```
 [servidor smtp]:587 seuemail:suasenha
 ```
+
 
 #### Criar banco de dados passwd SASL
 > [!IMPORTANT]
