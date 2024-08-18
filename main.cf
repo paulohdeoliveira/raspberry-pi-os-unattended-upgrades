@@ -46,4 +46,6 @@ smtp_sasl_auth_enable = yes
 smtp_sasl_security_options = noanonymous
 smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
 smtp_tls_security_level = encrypt
+smtp_tls_mandatory_ciphers = high
+smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3
 smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
