@@ -119,9 +119,13 @@ Conteúdo do arquivo:
 >[!NOTE]
 > Os parâmetros ```smtp_tls_mandatory_ciphers = high``` e ```smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3``` definem o nível de segurança das cifras e protocolos utilizados pelo SMTP Client.
 >
-> Neste tutorial foram configurados os níveis máximos de segurança para cifras e protocolos.
+> Nesta documentação foram configurados os níveis máximos de segurança para cifras e protocolos.
 >
 > Para saber mais sobre os valores que podem ser configurados, consultar a documentação do Postfix em: https://www.postfix.org/TLS_README.html#client_tls
+
+>[!IMPORTANT]
+> Cada provedor de email possui requisitos próprios de cifras e protocolos. Informações sobre quais cifras e protocolos são suportados devem ser obtidas diretamente com o provedor de email.
+>
 
   Reiniciar o Postfix  
 ```
@@ -222,7 +226,6 @@ Verificar o agendamento
 ```
   sudo systemctl status apt-daily-upgrade.timer
 ```
-
 >[!CAUTION]
 > Os procedimentos descritos neste documento foram realizados levando em consideração um contexto operacional específico e com melhores esforços para garantir a Confidencialidade, Integridade, Disponibilidade e Privacidade dos dados e sistema.
 >
