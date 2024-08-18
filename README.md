@@ -106,15 +106,16 @@ Conteúdo do arquivo:
   
  ##### Habilitar Autenticação SASL
 
-  Inserir linhas no final do arquivo
+   Inserir linhas no final do arquivo
   ```
   smtp_sasl_auth_enable = yes
   smtp_sasl_security_options = noanonymous
   smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
   smtp_tls_security_level = encrypt
+  smtp_tls_mandatory_ciphers = high
+  smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3
   smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 ```
-
   Reiniciar o Postfix  
 ```
   sudo systemctl restart postfix.service
@@ -215,6 +216,6 @@ Verificar o agendamento
   sudo systemctl status apt-daily-upgrade.timer
 ```
 
-
-
+>[!WARNING]
+> Os procedimentos descritos neste documento foram realizados levando em consideração um contexto operacional específico e com melhores esforços para garantir a Confidencialidade, Integridade, Disponibilidade e Privacidade dos dados. Você é responsável por verificar a adequação de qualquer instrução contida neste documento a seu contexto operacional e requisitos CIA.
   
