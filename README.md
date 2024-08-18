@@ -116,6 +116,13 @@ Conteúdo do arquivo:
   smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3
   smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 ```
+>[!NOTE]
+> Os parâmetros ```smtp_tls_mandatory_ciphers = high``` e ```smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3``` definem o nível de segurança das cifras e protocolos utilizados pelo SMTP Client.
+>
+> Neste tutorial foram configurados os níveis máximos de segurança para cifras e protocolos.
+>
+> Para saber mais sobre os valores que podem ser configurados, consultar a documentação do Postfix em: https://www.postfix.org/TLS_README.html#client_tls
+
   Reiniciar o Postfix  
 ```
   sudo systemctl restart postfix.service
@@ -216,6 +223,8 @@ Verificar o agendamento
   sudo systemctl status apt-daily-upgrade.timer
 ```
 
->[!WARNING]
-> Os procedimentos descritos neste documento foram realizados levando em consideração um contexto operacional específico e com melhores esforços para garantir a Confidencialidade, Integridade, Disponibilidade e Privacidade dos dados. Você é responsável por verificar a adequação de qualquer instrução contida neste documento a seu contexto operacional e requisitos CIA.
+>[!CAUTION]
+> Os procedimentos descritos neste documento foram realizados levando em consideração um contexto operacional específico e com melhores esforços para garantir a Confidencialidade, Integridade, Disponibilidade e Privacidade dos dados e sistema.
+>
+>Você é responsável por verificar a adequação de qualquer instrução contida neste documento a seu contexto operacional e requisitos CIA.
   
