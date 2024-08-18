@@ -89,9 +89,9 @@ Conteúdo do arquivo:
 #### Configurar o arquivo main.cf
 
 >[!WARNING]
-> Não copie o arquivo ```main.cf``` disponível no repositório pois o contéudo será diferente para cada instalação do postfix.
+> Não copie o arquivo ```main.cf``` disponível no repositório pois o conteúdo será diferente para cada instalação do postfix.
 >
-> Em vez disso edite seu arquivo original (gerado na instalação do Postfix) de acordo com este tópico.
+> Em vez disso edite o arquivo original (gerado na instalação do Postfix) de acordo com este tópico.
 
 ```
   sudo nano /etc/postfix/main.cf
