@@ -19,17 +19,17 @@
 > Caso a janela de configuração não apareça utilize o comando ```sudo dpkg-reconfigure postfix```, após o término da instalação do pacote.
 
 ```
-  sudo apt install unattended-upgrades
+sudo apt install unattended-upgrades
 ```
 ```
-  sudo apt install postfix
+sudo apt install postfix
 ```
 ```
-  sudo apt install libsasl2-modules
+sudo apt install libsasl2-modules
 ```
 #### Habilitar o Unattended-Upgrades
 ```
-  sudo dpkg-reconfigure --priority=low unattended-upgrades
+sudo dpkg-reconfigure --priority=low unattended-upgrades
 ```
 Responder "Yes" na janela que será aberta
 
@@ -42,14 +42,14 @@ Responder "Yes" na janela que será aberta
 
 #### Configurar o Unattended-Upgrades
 ```
-  sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
+sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
 ```
 Editar o conteúdo do arquivo conforme abaixo:
 
 #### Adicionar texto na seção Unattended-Upgrade::Origins-Pattern{:
 ```
- "origin=Raspbian,codename=${distro_codename},label=Raspbian";
- "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
+"origin=Raspbian,codename=${distro_codename},label=Raspbian";
+"origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation";
 ```
 
  #### Descomentar e Configurar
@@ -64,6 +64,11 @@ Editar o conteúdo do arquivo conforme abaixo:
  Unattended-Upgrade::Automatic-Reboot-Time "02:00";</br>
  Unattended-Upgrade::Verbose "false";</br>
 
+#### Reiniciar Unattended-Upgrade
+```
+sudo systemctl restart unattended-upgrades.service
+```
+
 ### Configurar o envio de email
 
 #### Configurar o arquivo /etc/postfix/sasl/sasl_passwd
@@ -74,12 +79,12 @@ Editar o conteúdo do arquivo conforme abaixo:
 
 Criar arquivo sasl_passwd
 ```
-  sudo touch /etc/postfix/sasl/sasl_passwd
+sudo touch /etc/postfix/sasl/sasl_passwd
 ```
 
 Abrir arquivo sasl_passwd:
 ```
-  sudo nano /etc/postfix/sasl/sasl_passwd
+sudo nano /etc/postfix/sasl/sasl_passwd
 ```
 Conteúdo do arquivo:
 >[!NOTE]
@@ -92,14 +97,14 @@ Conteúdo do arquivo:
 > [!IMPORTANT]
 > Executar o comando abaixo sempre que alterar o arquivo sasl_passwd
 ```
-  sudo postmap /etc/postfix/sasl/sasl_passwd
+sudo postmap /etc/postfix/sasl/sasl_passwd
 ```
 #### Definir permissões de arquivos
 ```
-  sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
-  ```
+sudo chown root:root /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
 ```
-  sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
+```
+sudo chmod 0600 /etc/postfix/sasl/sasl_passwd /etc/postfix/sasl/sasl_passwd.db
 ```
 #### Configurar o arquivo main.cf
 
@@ -109,27 +114,27 @@ Conteúdo do arquivo:
 > Em vez disso edite o arquivo original (gerado na instalação do Postfix) de acordo com este tópico.
 
 ```
-  sudo nano /etc/postfix/main.cf
+sudo nano /etc/postfix/main.cf
 ```
 ##### Comentar a linha 
 
-  #smtp_tls_security_level=may
+#smtp_tls_security_level=may
   
 ##### Configurar o relay host
 
-  relayhost = [servidor smtp]:587
+relayhost = [servidor smtp]:587
   
- ##### Habilitar Autenticação SASL
+##### Habilitar Autenticação SASL
 
-   Inserir linhas no final do arquivo
-  ```
-  smtp_sasl_auth_enable = yes
-  smtp_sasl_security_options = noanonymous
-  smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
-  smtp_tls_security_level = encrypt
-  smtp_tls_mandatory_ciphers = high
-  smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3
-  smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+Inserir linhas no final do arquivo
+```
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = noanonymous
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
+smtp_tls_security_level = encrypt
+smtp_tls_mandatory_ciphers = high
+smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 ```
 >[!NOTE]
 > Os parâmetros ```smtp_tls_mandatory_ciphers = high``` e ```smtp_tls_mandatory_protocols = >=TLSv1.2, <=TLSv1.3``` definem o nível de segurança das cifras e protocolos utilizados pelo SMTP Client.
@@ -142,14 +147,14 @@ Conteúdo do arquivo:
 > Cada provedor de email possui requisitos próprios de cifras e protocolos. Informações sobre quais cifras e protocolos são suportados devem ser obtidas diretamente com o provedor de email.
 >
 
-  Reiniciar o Postfix  
+  Recarregar arquivo de configuração do Postfix  
 ```
-  sudo systemctl restart postfix.service
+sudo systemctl reload postfix.service
 ```
 
 #### Testar o envio de email
 ```
-  sudo unattended-upgrades -d
+sudo unattended-upgrades -d
 ```
 >[!TIP]
 > Se escolheu a opção "on-change" no parâmetro ```Unattended-Upgrade::MailReport "on-change";``` apenas receberá o email se houver alguma "mudança" como atualização, remoção de pacotes, etc...
@@ -161,7 +166,7 @@ Conteúdo do arquivo:
 #### Configurar o intervalo das atualizações
 
 ```
-  sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+sudo nano /etc/apt/apt.conf.d/20auto-upgrades
 ```
 
 Inserir este conteúdo no arquivo:
@@ -193,54 +198,53 @@ Caminho dos arquivos de horário de atualização APT:
 
 **Definir o horário de Download**
 ```
-  sudo systemctl edit apt-daily.timer
+sudo systemctl edit apt-daily.timer
 ```
 >[!NOTE]
 > O comando acima criará o arquivo ```/etc/systemd/system/apt-daily.timer.d/override.conf``` que deverá conter o conteúdo abaixo.
 
 Acrescentar o código
 ```
-  [Timer]
-  OnCalendar=
-  OnCalendar=08:00 (colocar o horário)
-  RandomizedDelaySec=0
+[Timer]
+OnCalendar=
+OnCalendar=08:00 #(colocar o horário)
+RandomizedDelaySec=0
 ```
 >[!IMPORTANT]
 > O código OnCalendar= é necessário para realizar o override do horário original. Se não colocar este código a configuração do horário não irá funcionar.
 
-Reiniciar o serviço apt-daily.timer
-```
-  sudo systemctl restart apt-daily.timer
-```
-Verificar o agendamento
-```
-  sudo systemctl status apt-daily.timer
-```
 **Definir o horário de Upgrade**
 ```
-  sudo systemctl edit apt-daily-upgrade.timer
+sudo systemctl edit apt-daily-upgrade.timer
 ```
 >[!NOTE]
 > O comando acima criará o arquivo ```/etc/systemd/system/apt-daily-upgrade.timer.d/override.conf``` que deverá conter o conteúdo abaixo.
 
 Acrescentar o código
 ```
-  [Timer]
-  OnCalendar=
-  OnCalendar=08:20 (colocar o horário)
-  RandomizedDelaySec=0
+[Timer]
+OnCalendar=
+OnCalendar=08:20 #(colocar o horário)
+RandomizedDelaySec=0
 ```
 >[!IMPORTANT]
 > O código OnCalendar= é necessário para realizar o override do horário original. Se não colocar este código a configuração do horário não irá funcionar.
 
-Reiniciar o serviço apt-daily-upgrade.timer
+Reiniciar os serviços apt-daily.timer e apt-daily-upgrade.timer
 ```
-  sudo systemctl restart apt-daily-upgrade.timer
+sudo systemctl restart apt-daily.timer
+```
+```
+sudo systemctl restart apt-daily-upgrade.timer
 ```
 Verificar o agendamento
 ```
-  sudo systemctl status apt-daily-upgrade.timer
+sudo systemctl status apt-daily.timer
 ```
+```
+sudo systemctl status apt-daily-upgrade.timer
+```
+
 >[!CAUTION]
 > Os procedimentos descritos neste documento foram realizados levando em consideração um contexto operacional específico e com melhores esforços para garantir a Confidencialidade, Integridade, Disponibilidade e Privacidade dos dados e sistema.
 >
