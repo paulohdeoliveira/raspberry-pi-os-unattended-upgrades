@@ -1,14 +1,5 @@
 #### Automação de atualizações do sistema Raspberry Pi OS no Raspberry Pi Zero 2 W e envio de notificação por email com autenticação SASL.
 
->[!TIP]
-> **Dica de Segurança**
->
-> Antes de colar códigos copiados da internet diretamente no terminal, cole primeiro em um "bloco de notas". Isso permite que o código copiado seja visualizado e analisado antes de ser executado no terminal.
->
-> Existem técnicas que substituem códigos aparentemente legítimos por códigos maliciosos no momento em que são copiados, por este motivo evite colar códigos diretamente no terminal, mesmo que a fonte seja confiável.
->
-> Regra nº 1 de Segurança da Informação: Nada é confiável até que se prove o contrário.
-
 #### Pacotes necessários
 
 >[!IMPORTANT]
